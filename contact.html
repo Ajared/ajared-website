@@ -323,7 +323,7 @@
                 <nav>
                     <p><a href="case-studies.html">Case Studies</a></p>
                     <p><a href="capabilities.html">Capabilities</a></p>
-                    <p style="text-decoration: underline; font-weight: 600;">Contact / 007</p>
+                    <p style="text-decoration: underline; font-weight: 600;">Contact</p>
                     <p><a href="https://www.ajared.ng">Read</a></p>
                 </nav>
             </div>
@@ -456,7 +456,7 @@
         } catch (err) {
             status.style.display = 'block';
             status.style.color = '#a1665e';
-            status.textContent = '✗ ' + err.message + ' Please email innovation@ajared.ca directly.';
+            status.innerHTML = '✗ ' + err.message + ' Please email <a href="mailto:innovation@ajared.ca" style="color: inherit; text-decoration: underline;">innovation@ajared.ca</a> directly.';
             submitBtn.textContent = 'Send Message ↗';
             submitBtn.disabled = false;
         }
