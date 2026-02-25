@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-32x32.png">
     <title>Case Studies — Ajared Research Inc</title>
     <style>
         /* iA Writer Quattro S Font */
         @font-face {
             font-family: 'iA Writer Quattro S';
-            src: url('/fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
-                url('/fonts/iAWriterQuattroS-Regular.woff') format('woff');
+            src: url('fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+                 url('fonts/iAWriterQuattroS-Regular.woff') format('woff');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
-
         @font-face {
             font-family: 'iA Writer Quattro S';
-            src: url('/fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
-                url('/fonts/iAWriterQuattroS-Bold.woff') format('woff');
+            src: url('fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
+                 url('fonts/iAWriterQuattroS-Bold.woff') format('woff');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
         }
-
         @font-face {
             font-family: 'iA Writer Quattro S';
-            src: url('/fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),
-                url('/fonts/iAWriterQuattroS-Italic.woff') format('woff');
+            src: url('fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),
+                 url('fonts/iAWriterQuattroS-Italic.woff') format('woff');
             font-weight: 400;
             font-style: italic;
             font-display: swap;
@@ -54,12 +51,7 @@
             --radius-sm: 2px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            cursor: crosshair;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
 
         body {
             background-color: var(--color-bg);
@@ -71,23 +63,15 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-weight: 700;
             letter-spacing: -0.04em;
             line-height: 0.9;
             color: var(--color-ink-darkest);
         }
 
-        h1 {
-            font-size: clamp(4rem, 10vw, 9rem);
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+        h1 { font-size: clamp(4rem, 10vw, 9rem); }
+        h2 { font-size: 2rem; margin-bottom: 1rem; }
 
         p {
             font-size: 1.1rem;
@@ -108,10 +92,7 @@
             font-family: var(--font-mono);
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+        a { color: inherit; text-decoration: none; }
 
         .grid-container {
             display: grid;
@@ -139,9 +120,7 @@
             color: var(--color-ink-light);
         }
 
-        .ruler-y span:nth-child(5n+1) {
-            color: var(--color-terra);
-        }
+        .ruler-y span:nth-child(5n+1) { color: var(--color-terra); }
 
         .ruler-x {
             height: 40px;
@@ -175,10 +154,7 @@
             justify-content: space-between;
             min-height: 200px;
         }
-
-        .header-cell:last-child {
-            border-right: none;
-        }
+        .header-cell:last-child { border-right: none; }
 
         .logo-text {
             font-size: 1.6rem;
@@ -188,15 +164,8 @@
         }
 
 
-        nav p {
-            margin-bottom: 0.3rem;
-            font-size: 1rem;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-            color: var(--color-terra);
-        }
+        nav p { margin-bottom: 0.3rem; font-size: 1rem; }
+        nav a:hover { text-decoration: underline; color: var(--color-terra); }
 
         /* Hero */
         .hero-section {
@@ -260,31 +229,10 @@
             color: var(--color-bg);
         }
 
-        .project-id {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            color: #a1665e;
-        }
-
-        .project-title {
-            font-weight: 700;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            color: var(--color-ink-darkest);
-        }
-
-        .project-meta {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--color-ink-dark);
-        }
-
-        .project-year {
-            font-family: var(--font-mono);
-            text-align: right;
-            color: var(--color-ink);
-        }
+        .project-id { font-family: var(--font-mono); font-weight: 700; color: #a1665e; }
+        .project-title { font-weight: 700; font-size: 1.5rem; text-transform: uppercase; color: var(--color-ink-darkest); }
+        .project-meta { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-ink-dark); }
+        .project-year { font-family: var(--font-mono); text-align: right; color: var(--color-ink); }
 
         /* Footer */
         .footer {
@@ -294,9 +242,7 @@
             border-top: 2px solid #a1665e;
         }
 
-        .footer h2 {
-            color: var(--color-ink);
-        }
+        .footer h2 { color: var(--color-ink); }
 
         .footer h2 a {
             transition: color 0.3s ease;
@@ -307,140 +253,107 @@
         }
 
         @media (max-width: 900px) {
-            .grid-container {
-                grid-template-columns: 40px 1fr;
-            }
-
-            .ruler-y {
-                width: 40px;
-                padding-right: 4px;
-            }
-
+            .grid-container { grid-template-columns: 40px 1fr; }
+            .ruler-y { width: 40px; padding-right: 4px; }
             .project-row {
                 padding: 1.5rem 1.5rem;
                 grid-template-columns: 40px 1fr;
                 gap: 1rem;
             }
-
-            .project-meta,
-            .project-year {
-                display: none;
-            }
-
-            header {
-                grid-template-columns: 1fr;
-            }
-
+            .project-meta, .project-year { display: none; }
+            header { grid-template-columns: 1fr; }
             .header-cell {
                 padding: 1.5rem 1rem;
                 border-right: none;
                 border-bottom: var(--grid-line);
             }
-
             .hero-text {
                 padding: 2rem 1rem;
             }
-
             .footer {
                 padding: 3rem 1rem;
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
-            .footer>div:last-child {
+            .footer > div:last-child {
                 text-align: left;
             }
-
-            p {
-                max-width: 100%;
-            }
-
-            h1 {
-                font-size: 3.5rem;
-            }
+            p { max-width: 100%; }
+            h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
-
 <body>
 
-    <div class="grid-container">
-        <div class="ruler-y">
-            <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
-            <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
-            <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
+<div class="grid-container">
+    <div class="ruler-y">
+        <span>0</span><span>100</span><span>200</span><span>300</span><span>400</span>
+        <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+        <span>1000</span><span>1100</span><span>1200</span><span>1300</span><span>1400</span>
+    </div>
+
+    <div class="main-content">
+        <div class="ruler-x"></div>
+
+        <header>
+            <div class="header-cell">
+                <span class="label" style="color: var(--color-terra);">Information Architecture</span>
+                <div class="logo-text">
+                    <span style="color:#a1665e">aja</span><span style="color:#058c8c">RED</span><br>Research<br>Inc.
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Archive / 02</span>
+                <h2>Work</h2>
+                <div style="margin-top:auto">
+                    <span class="label">Projects</span>
+                    <p>1 Case Study</p>
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Navigation</span>
+                <nav>
+                    <p><a href="index.html">Index</a></p>
+                    <p><a href="case-studies.html" style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case Studies</a></p>
+                    <p><a href="capabilities.html">Capabilities</a></p>
+                    <p><a href="contact.html">Contact</a></p>
+                    <p><a href="https://www.ajared.ng">Read</a></p>
+                </nav>
+                <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↓</div>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-text">
+                <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Work</span>
+                <h1>Case<br>Studies</h1>
+            </div>
+            <div class="moire-static" style="transform: scale(1.5);"></div>
+            <div class="moire-static" style="transform: scale(1.2); right: 5%;"></div>
+        </section>
+
+        <div class="calibration-grid">
+            <a href="#" class="project-row">
+                <span class="project-id">001</span>
+                <span class="project-title">DeckSense</span>
+                <span class="project-meta">AI Product Management</span>
+                <span class="project-year">2025</span>
+                <span style="text-align: right; color: var(--color-terra);">↗</span>
+            </a>
         </div>
 
-        <div class="main-content">
-            <div class="ruler-x"></div>
-
-            <header>
-                <div class="header-cell">
-                    <span class="label" style="color: var(--color-terra);">Information Architecture</span>
-                    <div class="logo-text">
-                        <span style="color:#a1665e">aja</span><span style="color:#058c8c">RED</span><br>Research<br>Inc.
-                    </div>
-                </div>
-                <div class="header-cell">
-                    <span class="label">Archive / 02</span>
-                    <h2>Work</h2>
-                    <div style="margin-top:auto">
-                        <span class="label">Projects</span>
-                        <p>1 Case Study</p>
-                    </div>
-                </div>
-                <div class="header-cell">
-                    <span class="label">Navigation</span>
-                    <nav>
-                        <p><a href="/">Index</a></p>
-                        <p><a href="/case-studies/"
-                                style="text-decoration:underline; font-weight:600; color: var(--color-terra);">Case
-                                Studies</a></p>
-                        <p><a href="/capabilities/">Capabilities</a></p>
-                        <p><a href="/contact/">Contact</a></p>
-                        <p><a href="https://www.ajared.ng">Read</a></p>
-                    </nav>
-                    <div style="margin-top: auto; font-size: 2rem; line-height: 1; color: var(--color-terra);">↓</div>
-                </div>
-            </header>
-
-            <section class="hero-section">
-                <div class="hero-text">
-                    <span class="label" style="margin-bottom: 2rem; color: var(--color-terra);">Work</span>
-                    <h1>Case<br>Studies</h1>
-                </div>
-                <div class="moire-static" style="transform: scale(1.5);"></div>
-                <div class="moire-static" style="transform: scale(1.2); right: 5%;"></div>
-            </section>
-
-            <div class="calibration-grid">
-                <a href="#" class="project-row">
-                    <span class="project-id">001</span>
-                    <span class="project-title">DeckSense</span>
-                    <span class="project-meta">AI Product Management</span>
-                    <span class="project-year">2025</span>
-                    <span style="text-align: right; color: var(--color-terra);">↗</span>
-                </a>
+        <div class="footer">
+            <div>
+                <span class="label" style="color: var(--color-terra);">Inquiries</span>
+                <h2><a href="mailto:innovation@ajared.ca">innovation@<span style="color: #a1665e;">aja</span>red.ca</a></h2>
             </div>
-
-            <div class="footer">
-                <div>
-                    <span class="label" style="color: var(--color-terra);">Inquiries</span>
-                    <h2><a href="mailto:innovation@ajared.ca">innovation@<span
-                                style="color: #a1665e;">aja</span>red.ca</a></h2>
-                </div>
-                <div
-                    style="text-align:right; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-end; gap:0.5rem;">
-                    <p>© 2026 Ajared Research Inc.</p>
-                    <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch,
-                        <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span
-                            style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span
-                            style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
-                </div>
+            <div style="text-align:right; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-end; gap:0.5rem;">
+                <p>© 2026 Ajared Research Inc.</p>
+                <span class="label">R<span style="color:#a1665e">e</span>s<span style="color:#a1665e">ea</span>rch, <span style="color:#a1665e">e</span>d<span style="color:#a1665e">u</span>c<span style="color:#a1665e">a</span>t<span style="color:#a1665e">e</span>, d<span style="color:#a1665e">e</span>s<span style="color:#a1665e">i</span>gn.</span>
             </div>
         </div>
     </div>
+</div>
 
 </body>
-
 </html>

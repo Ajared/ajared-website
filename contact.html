@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-32x32.png">
+    <title>Contact — Ajared Research Inc</title>
+    <style>
+        /* iA Writer Quattro S Font */
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('fonts/iAWriterQuattroS-Regular.woff2') format('woff2'),
+                 url('fonts/iAWriterQuattroS-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('fonts/iAWriterQuattroS-Bold.woff2') format('woff2'),
+                 url('fonts/iAWriterQuattroS-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'iA Writer Quattro S';
+            src: url('fonts/iAWriterQuattroS-Italic.woff2') format('woff2'),
+                 url('fonts/iAWriterQuattroS-Italic.woff') format('woff');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        :root {
+            --color-bg: #ffffff;
+            --color-ink: #058c8c;
+            --color-ink-dark: #046363;
+            --color-ink-darkest: #023b3b;
+            --color-ink-light: #8ccaca;
+            --color-ink-lighter: #b2dbdb;
+            --color-neutral-dark: #323232;
+            --color-terra: #a1665e;
+            --grid-line: 1px solid var(--color-ink);
+            --font-primary: 'iA Writer Quattro S', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'iA Writer Quattro S', 'Courier New', monospace;
+            --radius-sm: 2px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-ink);
+            font-family: var(--font-primary);
+            overflow-x: hidden;
+            width: 100vw;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: var(--color-ink-darkest);
+        }
+
+        h1 { font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem; }
+        h2 { font-size: 2rem; }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            max-width: 36ch;
+            font-weight: 400;
+            color: var(--color-ink-dark);
+        }
+
+        .label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--color-ink);
+            font-family: var(--font-mono);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        nav p { margin-bottom: 0.3rem; font-size: 1rem; }
+        nav a:hover { text-decoration: underline; color: var(--color-terra); }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            min-height: 100vh;
+            border-left: var(--grid-line);
+            border-right: var(--grid-line);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .ruler-y {
+            width: 80px;
+            border-right: var(--grid-line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-align: right;
+            padding-right: 8px;
+            background-image: linear-gradient(to bottom, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 100% 20px;
+            color: var(--color-ink-light);
+        }
+
+        .ruler-y span:nth-child(5n+1) { color: var(--color-terra); }
+
+        .ruler-x {
+            height: 40px;
+            width: 100%;
+            border-bottom: var(--grid-line);
+            background-image: linear-gradient(to right, var(--color-ink-light) 1px, transparent 1px);
+            background-size: 20px 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--color-bg);
+        }
+
+        .main-content { display: flex; flex-direction: column; }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: var(--grid-line);
+        }
+
+        .header-cell {
+            padding: 2rem;
+            border-right: var(--grid-line);
+            min-height: 160px;
+        }
+        .header-cell:last-child { border-right: none; }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-ink-darkest);
+        }
+
+
+        /* Form Layout */
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex-grow: 1;
+        }
+
+        .form-left {
+            padding: 4rem 2rem;
+            border-right: var(--grid-line);
+        }
+
+        .form-right {
+            padding: 4rem 2rem;
+            background-image: radial-gradient(circle at 2px 2px, var(--color-ink-light) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .instrument-field {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .instrument-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--color-ink);
+            color: var(--color-ink-darkest);
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            padding: 0.5rem 0;
+            outline: none;
+            cursor: crosshair;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .instrument-input:focus {
+            border-bottom-color: #a1665e;
+            box-shadow: 0 1px 0 0 rgba(161, 102, 94, 0.2);
+        }
+
+        .instrument-input::placeholder {
+            color: var(--color-ink-light);
+        }
+
+        .technical-markings {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            margin-top: 4px;
+            color: var(--color-ink-light);
+        }
+
+        .coordinate-selector {
+            border: 1px solid var(--color-ink);
+            height: 300px;
+            position: relative;
+            margin-top: 1rem;
+            overflow: hidden;
+            background: var(--color-bg);
+            border-radius: var(--radius-sm);
+        }
+
+        .crosshair-v {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #a1665e;
+            pointer-events: none;
+        }
+
+        .crosshair-h {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #a1665e;
+            pointer-events: none;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .status-light {
+            width: 12px;
+            height: 12px;
+            background: var(--color-terra);
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 2rem;
+            background: var(--color-ink);
+            color: var(--color-bg);
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            font-family: var(--font-primary);
+            text-align: left;
+            letter-spacing: 0.03em;
+            transition: background 0.3s;
+            margin-top: 2rem;
+            cursor: crosshair;
+            border-radius: var(--radius-sm);
+        }
+
+        .btn-submit:hover { background: var(--color-ink-dark); }
+
+        .brief-textarea {
+            width: 100%;
+            min-height: 150px;
+            background: transparent;
+            border: 1px solid var(--color-ink);
+            padding: 1rem;
+            color: var(--color-ink-darkest);
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            resize: vertical;
+            outline: none;
+            cursor: crosshair;
+            border-radius: var(--radius-sm);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .brief-textarea:focus {
+            border-color: #a1665e;
+            box-shadow: 0 0 0 2px rgba(161, 102, 94, 0.1);
+        }
+
+        .brief-textarea::placeholder { color: var(--color-ink-light); }
+
+        @media (max-width: 900px) {
+            .grid-container { grid-template-columns: 40px 1fr; }
+            .ruler-y { width: 40px; padding-right: 4px; }
+            .form-section { grid-template-columns: 1fr; }
+            header { grid-template-columns: 1fr; }
+            .header-cell {
+                padding: 1.5rem 1rem;
+            }
+            .form-left {
+                padding: 3rem 1rem;
+                border-right: none;
+                border-bottom: var(--grid-line);
+            }
+            .form-right {
+                padding: 3rem 1rem;
+            }
+            p { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="ruler-y">
+        <span>000</span><span>100</span><span>200</span><span>300</span><span>400</span>
+        <span>500</span><span>600</span><span>700</span><span>800</span><span>900</span>
+    </div>
+
+    <div class="main-content">
+        <div class="ruler-x"></div>
+
+        <header>
+            <div class="header-cell">
+                <span class="label" style="color: var(--color-terra);">Index</span>
+                <div class="logo-text">
+                    <a href="index.html"><span style="color:#a1665e">aja</span><span style="color:#058c8c">RED</span> Research<br>Inc.</a>
+                </div>
+            </div>
+            <div class="header-cell">
+                <span class="label">Title</span>
+                <p>Get in Touch<br>Version 1.0.2<br>ID: AJR-INQ-01</p>
+            </div>
+            <div class="header-cell">
+                <span class="label">Navigation</span>
+                <nav>
+                    <p><a href="case-studies.html">Case Studies</a></p>
+                    <p><a href="capabilities.html">Capabilities</a></p>
+                    <p style="text-decoration: underline; font-weight: 600; color: var(--color-terra);">Contact</p>
+                    <p><a href="https://www.ajared.ng">Read</a></p>
+                </nav>
+            </div>
+        </header>
+
+        <section class="form-section">
+            <div class="form-left">
+                <span class="label">Contact</span>
+                <h1>New<br>Inquiry</h1>
+
+                <form id="commission-form" action="https://formspree.io/f/mrearkjn" method="POST">
+                    <input type="hidden" name="_subject" value="New Inquiry — Ajared Research Inc">
+                    <input type="hidden" name="_replyto" value="">
+
+                    <div class="instrument-field">
+                        <span class="label">01 / Principal Contact</span>
+                        <input type="text" name="name" required class="instrument-input" placeholder="Organization or Individual">
+                        <div class="technical-markings">
+                            <span>MIN_LEN: 2</span>
+                            <span>TYPE: STRING</span>
+                            <span>MAX_LEN: 128</span>
+                        </div>
+                    </div>
+
+                    <div class="instrument-field">
+                        <span class="label">02 / Email</span>
+                        <input type="email" name="email" required class="instrument-input" placeholder="your-email@domain.com">
+                        <div class="technical-markings">
+                            <span>VAL: SMTP</span>
+                            <span>PRIORITY: HIGH</span>
+                        </div>
+                    </div>
+
+                    <div class="instrument-field">
+                        <span class="label">03 / Specific Deliverable (Optional)</span>
+                        <select name="deliverable" id="deliverable-select" class="instrument-input" style="cursor: crosshair;">
+                            <option value="">Select a deliverable...</option>
+                        </select>
+                        <div class="technical-markings">
+                            <span>DYNAMIC</span>
+                            <span>TYPE: SELECT</span>
+                            <span>OPTIONAL</span>
+                        </div>
+                    </div>
+
+                    <div class="instrument-field">
+                        <span class="label">04 / Project Scope / Brief</span>
+                        <textarea name="message" id="message-textarea" class="brief-textarea" placeholder="Tell us what you're working on and how we can help..."></textarea>
+                    </div>
+
+                    <div id="form-status" style="display:none; margin-top:1rem; font-family:var(--font-mono); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase;"></div>
+
+                    <button type="submit" class="btn-submit" id="submit-btn">
+                        Send Message ↗
+                    </button>
+                </form>
+            </div>
+
+            <div class="form-right">
+                <div class="instrument-field">
+                    <span class="label">04 / Origin Coordinates</span>
+                    <p style="margin-bottom: 1rem;">Where are you based?</p>
+                    <div class="coordinate-selector" id="coord-map">
+                        <div class="crosshair-v" id="ch-v"></div>
+                        <div class="crosshair-h" id="ch-h"></div>
+                    </div>
+                    <div class="technical-markings" style="margin-top: 10px;">
+                        <span id="coord-display">LAT: 0.0000 / LONG: 0.0000</span>
+                    </div>
+                </div>
+
+                <div class="instrument-field" style="margin-top: 4rem;">
+                    <span class="label">System Status</span>
+                    <div class="status-indicator">
+                        <div class="status-light"></div>
+                        <p style="text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em;">Awaiting Input Signal...</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <span class="label">Response Times</span>
+                    <p>We typically respond within 48–72 hours.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    // Service-specific deliverables mapping
+    const deliverables = {
+        'Applied Research': ['UX Research', 'Market Research', 'Experimental Design', 'Meta-Analysis'],
+        'AI Product Development': ['Product Strategy', 'Roadmap', 'Model Selection & Integration', 'Launch', 'Product Analytics'],
+        'Enterprise AI Agents': ['AI Agents', 'Task Automation', 'Multi-Agent Coordination', 'RAG Pipelines', 'Production LLM Ops'],
+        'Data & AI Strategy': ['Data Audit', 'Readiness Assessment', 'Knowledge Graph', 'Governance', 'GEO (Generative Engine Optimization)']
+    };
+
+    // Read URL parameter and populate form
+    const urlParams = new URLSearchParams(window.location.search);
+    const service = urlParams.get('service');
+    const deliverableSelect = document.getElementById('deliverable-select');
+
+    if (service && deliverables[service]) {
+        // Populate dropdown with deliverables
+        deliverables[service].forEach(deliverable => {
+            const option = document.createElement('option');
+            option.value = deliverable;
+            option.textContent = deliverable;
+            deliverableSelect.appendChild(option);
+        });
+    }
+
+    const map = document.getElementById('coord-map');
+    const display = document.getElementById('coord-display');
+    const chV = document.getElementById('ch-v');
+    const chH = document.getElementById('ch-h');
+
+    map.addEventListener('mousemove', (e) => {
+        const rect = map.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const lat = ((y / rect.height) * 180 - 90).toFixed(4);
+        const long = ((x / rect.width) * 360 - 180).toFixed(4);
+
+        chV.style.left = x + 'px';
+        chH.style.top = y + 'px';
+
+        display.innerText = `LAT: ${lat} / LONG: ${long}`;
+    });
+
+    const form = document.getElementById('commission-form');
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Mirror email into hidden _replyto so Formspree sets reply-to correctly
+    form.querySelector('[name="email"]').addEventListener('input', function() {
+        form.querySelector('[name="_replyto"]').value = this.value;
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        status.style.display = 'none';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                status.style.display = 'block';
+                status.style.color = 'var(--color-ink-dark)';
+                status.textContent = '✓ Message received — we will respond within 48–72 hours.';
+                form.reset();
+                submitBtn.textContent = 'Send Message ↗';
+                submitBtn.disabled = false;
+            } else {
+                const data = await response.json();
+                throw new Error(data.errors ? data.errors.map(e => e.message).join(', ') : 'Submission failed.');
+            }
+        } catch (err) {
+            status.style.display = 'block';
+            status.style.color = '#a1665e';
+            status.innerHTML = '✗ ' + err.message + ' Please email <a href="mailto:innovation@ajared.ca" style="color: inherit; text-decoration: underline;">innovation@ajared.ca</a> directly.';
+            submitBtn.textContent = 'Send Message ↗';
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>
